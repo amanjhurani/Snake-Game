@@ -30,7 +30,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
 
     private ImageIcon snakeimage;
 
-    private int[] enemyxpos = {25,50,75,100,125,150,175,200,225,250,275,300,325,350,375,400,425,450,475,500,525,550,575,600,625,650,675,700,725,750,775,800,825,850};
+    private int[] enemyxpos = {25,50,75,100,125,175,200,225,250,275,300,325,350,375,400,425,450,475,500,525,550,575,600,625,650,675,700,725,750,775,800,825,850};
     private int[] enemyypos = {75,100,125,150,175,200,225,250,275,300,325,350,375,400,425,450,475,500,525,550,575,600};
 
     private ImageIcon enemyimage;
@@ -87,6 +87,9 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
         // background for the gameplay
         backImage = new ImageIcon("../background.jpg");
         backImage.paintIcon(this,g,25,75);
+        ImageIcon hurdle1 = new ImageIcon("../hurdle1.png");
+        hurdle1.paintIcon(this,g,150,300);
+
 //        g.setColor(Color.BLACK);
 //        g.fillRect(25,75,850,555);
 
@@ -132,7 +135,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
         enemyimage.paintIcon(this,g,enemyxpos[xpos],enemyypos[ypos]);
 
         for (int b = 1;b<lengthofsnake;b++){
-            if (snakexlength[b]==snakexlength[0] && snakeylength[b] == snakeylength[0]){
+            if (snakexlength[b]==snakexlength[0] && snakeylength[b] == snakeylength[0] || ((snakeylength[0]==300 || snakeylength[0]==350  || snakeylength[0]==375 || snakeylength[0]==325) && snakexlength[0]==150)){
                 right = false;
                 left = false;
                 up = false;
@@ -146,7 +149,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
                 g.drawString("Your Score: "+score,375,350);
                 g.drawString("Space To RESTART",362,400);
             }
+
+
+
         }
+
+
         g.dispose();
     }
 
