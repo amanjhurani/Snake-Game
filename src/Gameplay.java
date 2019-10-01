@@ -241,6 +241,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
             moves =0;
             score =0;
             lengthofsnake = 3;
+            endofgame = false;
             repaint();
         }
         if(e.getKeyCode()==KeyEvent.VK_RIGHT && endofgame == false){
