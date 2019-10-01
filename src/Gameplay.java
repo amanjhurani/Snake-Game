@@ -40,6 +40,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
     private int ypos = random.nextInt(22);
 
     private int score = 0;
+    private boolean endofgame = false;
 
 
 
@@ -140,7 +141,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
                 left = false;
                 up = false;
                 down = false;
-
+                endofgame = true;
                 g.setColor(Color.white);
                 g.setFont(new Font("ariel",Font.BOLD,50));
                 g.drawString("Game Over",325,300);
@@ -148,6 +149,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
                 g.setFont(new Font("ariel",Font.BOLD,20));
                 g.drawString("Your Score: "+score,375,350);
                 g.drawString("Space To RESTART",362,400);
+
             }
 
 
@@ -235,13 +237,13 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode()==KeyEvent.VK_SPACE){
+        if(e.getKeyCode()==KeyEvent.VK_SPACE && endofgame == true){
             moves =0;
             score =0;
             lengthofsnake = 3;
             repaint();
         }
-        if(e.getKeyCode()==KeyEvent.VK_RIGHT){
+        if(e.getKeyCode()==KeyEvent.VK_RIGHT && endofgame == false){
             moves++;
             right = true;
             if(!left){right = true;}
@@ -249,7 +251,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
             up = false;
             down = false;
         }
-        if(e.getKeyCode()==KeyEvent.VK_LEFT){
+        if(e.getKeyCode()==KeyEvent.VK_LEFT && endofgame == false){
             moves++;
             left = true;
             if(!right){left = true;}
@@ -258,7 +260,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
             up = false;
             down = false;
         }
-        if(e.getKeyCode()==KeyEvent.VK_UP){
+        if(e.getKeyCode()==KeyEvent.VK_UP && endofgame == false){
             moves++;
             up = true;
             if(!down){up = true;}
@@ -267,7 +269,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
             left = false;
             right = false;
         }
-        if(e.getKeyCode()==KeyEvent.VK_DOWN){
+        if(e.getKeyCode()==KeyEvent.VK_DOWN && endofgame == false){
             moves++;
             down = true;
             if(!up){down = true;}
